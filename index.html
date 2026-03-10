@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analizador del sistema Linux - CuentaElementos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo">CE</div>
+          <div>
+            <h1>CuentaElementos</h1>
+            <p>Analizador del sistema Linux</p>
+          </div>
+        </div>
+        <nav>
+          <a href="#intro">Objetivo</a>
+          <a href="#comandos">Comandos clave</a>
+          <a href="#diagramas">Diagramas</a>
+          <a href="#paso">Paso a paso</a>
+          <a href="#terminal">Terminal</a>
+          <a href="#scripts">Scripts bash</a>
+          <a href="#docs">Documentacion</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header class="hero">
+          <div>
+            <p class="tag">Laboratorio de comandos</p>
+            <h2>Cuenta archivos, carpetas y uso de disco</h2>
+            <p>
+              Aprende a medir elementos del sistema con comandos reales, ejemplos
+              y scripts listos para ejecutar.
+            </p>
+          </div>
+          <div class="hero-box">
+            <h3>Comando destacado</h3>
+            <code>$ ls -1 | wc -l</code>
+            <p>Cuenta archivos del directorio actual.</p>
+          </div>
+        </header>
+
+        <section id="intro" class="panel">
+          <h3>Objetivo del laboratorio</h3>
+          <p>
+            Comprender como contar archivos, carpetas y medir el uso de disco con
+            herramientas basicas de Linux.
+          </p>
+        </section>
+
+        <section class="search">
+          <input id="search" type="search" placeholder="Buscar comando..." />
+          <span>Ejemplo: find, du, tree</span>
+        </section>
+
+        <section id="comandos" class="panel">
+          <div class="panel-header">
+            <h3>Comandos clave</h3>
+            <p>Presiona Ejecutar para ver la salida simulada.</p>
+          </div>
+          <div class="grid three">
+            <article
+              class="card command-card"
+              data-command="ls -1 | wc -l"
+              data-output="Archivos en el directorio actual\\n12"
+              data-tags="conteo archivos"
+            >
+              <h4>ls | wc -l</h4>
+              <p>Cuenta los elementos listados.</p>
+              <code>$ ls -1 | wc -l</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ ls -1 | wc -l">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="find . -type f | wc -l"
+              data-output="Archivos encontrados\\n248"
+              data-tags="find archivos"
+            >
+              <h4>find</h4>
+              <p>Busca archivos por tipo o patron.</p>
+              <code>$ find . -type f | wc -l</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ find /var/log -type f | wc -l">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="find . -type d | wc -l"
+              data-output="Directorios encontrados\\n35"
+              data-tags="find directorios"
+            >
+              <h4>find (dirs)</h4>
+              <p>Cuenta directorios dentro de una ruta.</p>
+              <code>$ find . -type d | wc -l</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ find /etc -type d | wc -l">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="du -sh ."
+              data-output="Uso del directorio\\n1.4G ."
+              data-tags="du"
+            >
+              <h4>du</h4>
+              <p>Mide uso de disco por carpeta.</p>
+              <code>$ du -sh .</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ du -sh /var/log">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="df -h"
+              data-output="Sistema de archivos\\n/dev/sda1  40G  12G  28G  31% /"
+              data-tags="df"
+            >
+              <h4>df</h4>
+              <p>Espacio libre por particion.</p>
+              <code>$ df -h</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ df -h">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="tree -L 2"
+              data-output="Estructura de carpetas\\n./\\n|- docs\\n|- src\\n|- logs"
+              data-tags="tree"
+            >
+              <h4>tree</h4>
+              <p>Visualiza estructura de carpetas.</p>
+              <code>$ tree -L 2</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ tree -L 3 /var/log">Copiar</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="diagramas" class="panel">
+          <h3>Diagramas de carpetas</h3>
+          <div class="grid two">
+            <article class="card">
+              <h4>Estructura de laboratorio</h4>
+              <pre>
+proyecto/
+|- docs/
+|- bash/
+|- data/
+|  |- logs/
+|  |- backups/
+              </pre>
+            </article>
+            <article class="card">
+              <h4>Conteo con find</h4>
+              <pre>
+find . -type f | wc -l
+find . -type d | wc -l
+              </pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="paso" class="panel">
+          <h3>Explicacion paso a paso</h3>
+          <div class="grid three">
+            <article class="card">
+              <h4>Paso 1</h4>
+              <p>Ubicate en el directorio objetivo con `cd`.</p>
+            </article>
+            <article class="card">
+              <h4>Paso 2</h4>
+              <p>Cuenta archivos con `find` o `ls | wc -l`.</p>
+            </article>
+            <article class="card">
+              <h4>Paso 3</h4>
+              <p>Analiza el uso de disco con `du` y `df`.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="terminal" class="panel terminal-panel">
+          <h3>Terminal simulada</h3>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span></span><span></span><span></span>
+              <p>bash - analisis@linux</p>
+            </div>
+            <div id="terminal-output" class="terminal-output"></div>
+            <div class="terminal-input">
+              <span>$</span>
+              <input id="terminal-input" type="text" placeholder="Escribe un comando..." />
+              <button id="terminal-run">Ejecutar</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="scripts" class="panel">
+          <h3>Scripts bash incluidos</h3>
+          <div class="grid three">
+            <article class="card">
+              <h4>count_files.sh</h4>
+              <code>bash bash/count_files.sh</code>
+            </article>
+            <article class="card">
+              <h4>count_dirs.sh</h4>
+              <code>bash bash/count_dirs.sh</code>
+            </article>
+            <article class="card">
+              <h4>disk_usage.sh</h4>
+              <code>bash bash/disk_usage.sh</code>
+            </article>
+          </div>
+        </section>
+
+        <section id="docs" class="panel">
+          <h3>Documentacion</h3>
+          <p>Consulta la guia detallada en <strong>docs/guia.md</strong>.</p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
