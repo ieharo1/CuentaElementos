@@ -1,4 +1,4 @@
-# Analizador del sistema Linux - CuentaElementos
+# Analizador del sistema Linux
 
 Laboratorio de comandos para contar archivos, carpetas y uso de disco.
 
